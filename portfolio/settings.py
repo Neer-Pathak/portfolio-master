@@ -64,7 +64,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-            ],
+            ], 'libraries' : {
+                'staticfiles': 'django.templatetags.static', 
+            }
         },
     },
 ]
@@ -123,6 +125,12 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
+
+
+STATIC_DIRS = [
+    BASE_DIR / 'portfolio/static/'
+]
+STATIC_ROOT = BASE_DIR / 'static/'
 
 STATIC_URL = 'static/'
 MEDIA_ROOT = BASE_DIR / 'media/'

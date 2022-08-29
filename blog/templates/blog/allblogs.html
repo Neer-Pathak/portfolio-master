@@ -1,10 +1,7 @@
 
 <!doctype html>
 <html lang="en">
-   
-
   <head>
-    {% load staticfiles %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -105,45 +102,26 @@
 </header>
 
 <main>
-
-  <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">Hi, I am Neer</h1>
-        <p class="lead text-muted">Hey, my name is Neer Pathak and I love to make scalable website. I have connected this website to mysql database. I have used django framework to design this website.</p>
-        <p>
-          <a href="mailto:notifyneer@gmail.com" class="btn btn-primary my-2">Email me</a>
-        </p>
-        {% comment %} <img src="{% static 'me.jpeg' %}" height="300" /> {% endcomment %}
-      </div>
-    </div> 
-    {% comment %} Neer Pathak copyright {% endcomment %}
-  </section>
-
-  <div class="album py-5 bg-light">
     <div class="container">
 
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-      
-        {% for job in jobs.all %}
-        <div class="col">
-          <div class="card shadow-sm">
-            <img class="card-img-top" src="{{ job.image.url }}" />
-
-            <div class="card-body">
-              <p class="card-text">{{job.summary}}</p>
-              
-            </div>
-          </div>
-        </div>
-        {%endfor%}
-        
+        <h1 class="text-center pt-3">Welcome to Neer's Blog</h1>
+        <br />
+        <br />
+        <h2>Latest Posts</h2>
+        <hr />
+    
+        {% for blog in blogs.all %}
+        <a href="{% url 'detail' blog.id %}"><h3>{{ blog.title }}</h3></a>
+        {{ blog.pub_date }}
+        <br />
+        <img class="img-fluid" src="{{ blog.image.url }}" height=200 width=200 />
+        <br />
+        <p>{{ blog.summary }}</p>
+        {% endfor %}
+    
       </div>
-    </div>
-  </div>
-
+    
 </main>
-
 <footer class="text-muted py-5">
   <div class="container text-center">
     <p>© Neer Pathak {% now "Y" %}</p>
